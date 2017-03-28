@@ -3,25 +3,32 @@
   <head>
     <meta charset="utf-8"/>
     <title>William's API to the World</title>
-    <style>
-      body {
-        width: 80%;
-        margin: 0 auto;
-      }
-    </style>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans" rel="stylesheet">
   </head>
   <body>
-    
-    <input></input>
-    <h1> Your movie selection is, <span class="movieTitle"></span></h1>
+
+  <p>
+    <input id="movies" value="Enter Movie Name"></input>
+    <button id="search">Search</button>
+  </p>
+  <main>
+    <h1> You have selected, <span class="movieTitle"></span></h1>
+
+  <section>
     <img src="" />
 
+    <div class="text">
+    <h2>About this movie:</h2>
     <p><span class="description"></span></p>
     <p>This movie opened on: <span class="openingDate"></span></p>
     <p>This movie has <span class="following"></span> followers.</p>
     <p>This movie made: $<span class="ticketSales"></span></p>
-    <p>This movie is: <span class="duration"></span> minutes.</p>
+    <p>This movie is: <span class="duration"></span> minutes long.</p>
+  </div>
+  </section>
 
+</main>
 
   <script src="api_key.js"></script>
   <script src="index.js"></script>
