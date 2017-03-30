@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Hello World</h1>
+  <button>Get movie data</button>
+  <script>
+  //Question 1
+      function getData (url, params) {
+       let key = "1922c66ebaed294ac65a15f52834a49b";
+       return fetch(`https://api.themoviedb.org/3/${url}?api_key=${key}&${params}`)
+         .then(response => response.json())
+
+     }
+
+     function getMovie (movieData) {
+       //console.log('working with', movieData.title );
+       return getData('movie/${moviveData.id}') //.then(json => console.log(json))
+     }
+     function combineBudget (total, movie) {
+       console.log('current movie budget', movie.budget);
+       return total + budget;
+     }
+     function showCombinedBudget (movies) {
+       let allTheMonies = movies => movies.reduce(combineBudget, 0);
+       console.log('these things cost', allTheMonies);
+     }
+     //Question 5
+     function getActorCredits (actor) {
+       console.log('working with', actor.name)
+       return getData('person/${actor.id}/movie_credits')
+     }
+     getData('movie/popular')
+       .then(json => {//json.results.map(getMovie))
+         let topTen = json.results.slice(0,10);
+         return topTen.map(getMovie)
+       })
+        //.then(wtf => console.log(wtf));
+        //.then(moviePromises => Promise.all(moviePromises).then movies => movies.reduce (combineBudget, 0)));
+        .then(moviePromises => Promise.all(moviePromises))
+        .then(showCombinedBudget);
+
+        //Question 5
+        getData('discover/movie', 'primary_release_year=2016')
+          .then(json => getData('movie/${json.results[0].id}/credits'))
+          .then(json => json.cast.map(getActorCredits));
+          .then(wtf => console.log(wft));
+  </script>
+</body>
+</html>

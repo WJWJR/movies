@@ -22,23 +22,24 @@ function useJsonOnPage (json) {
      .then(useJsonOnPage);
 
 
-//Show User Inputing Movie Titles
-function showUserInput(event) {
-  //let input = event.target.innerText;
-  input.innerHTML;
-  console.log(showUserInput);
-}
 
-let input = document.querySelector('#movies');
-input.innerHTML;
+let searchButton = document.querySelector('#search');
+searchButton.addEventListener('click', userClickedButton);
 
 // Show User Clicking Search Button
-function userClickedButton(event) {
-
+function userClickedButton() {
+  let userInPut = document.querySelector('#movies');
+  let myInput = userInPut.value;
+  console.log(myInput);
+  fetch("https://api.themoviedb.org/3/search/movie?api_key=" + key + "&query=" + myInput)
+    .then(res => res.json())
+    .then(obj => obj.results[0])
+    .then(useJsonOnPage);
 }
 
-let buttonClicked = document.querySelector('#search');
-console.log(buttonClicked)
-buttonClicked.addEventListener('click', userClickedButton);
-//console.log(buttonClicked)
-//fetch("https://api.themoviedb.org/3/search/movie?api_key=" + key + " ")&query=+"input.value()")
+
+
+//fetch("https://api.themoviedb.org/3/search/movie?api_key=" + key + "&query=+input.value()")
+  //.then(response => response.json())
+  //.then(json => useJsonOnPage(json.results[0]));
+//.then(object => console.log(object));
