@@ -37,6 +37,25 @@ function userClickedButton() {
     .then(useJsonOnPage);
 }
 
+// Load movieGenres on page when page Loads.
+let loadedOnPage = document.querySelector('movieGenres');
+//loadedOnPage.addEventListener('load', addMovieGenres);
+
+addMovieGenres();
+
+function addMovieGenres() {
+  //create a new ul element
+  //create a new li elements
+  //add content to li elements
+  let genreUl = document.createElement('ul');
+  let genreLis = document.createElement('li');
+  genreLis.textContent = genreUl.appendChild(genreLis);
+  console.log(genreLis);
+  fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=" + key)
+    .then(res => res.json())
+    .then(obj => obj.genres)
+    .then(genres => console.log(genres));
+}
 
 
 //fetch("https://api.themoviedb.org/3/search/movie?api_key=" + key + "&query=+input.value()")

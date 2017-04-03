@@ -52,3 +52,9 @@ button {
 color: red;
 letter-spacing:.09rem;
 }
+
+.movieGenres {
+  width: 100%;
+  background-color: blue;
+  height: 70px;
+}
